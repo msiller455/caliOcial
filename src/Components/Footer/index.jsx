@@ -11,13 +11,13 @@ const Footer = () => {
                 © 2020 Michael Siller
             </Copyright>
             <MediaLinks>
-                <MediaLink href="https://github.com/msiller455">
+                <MediaLink target="_blank" href="https://github.com/msiller455">
                     <FontAwesomeIcon icon={faGithubSquare} size="2x" />
                 </MediaLink>
-                <MediaLink href="https://www.linkedin.com/in/michaelasiller/">
+                <MediaLink target="_blank" href="https://www.linkedin.com/in/michaelasiller/">
                     <FontAwesomeIcon icon={faLinkedin} size="2x" />
                 </MediaLink>
-                <MediaLink href="https://www.instagram.com/chum455/">
+                <MediaLink target="_blank" href="https://www.instagram.com/chum455/">
                     <FontAwesomeIcon icon={faInstagramSquare} size="2x" />
                 </MediaLink>
             </MediaLinks>

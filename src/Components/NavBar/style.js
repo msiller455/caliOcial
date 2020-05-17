@@ -2,29 +2,29 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 export const NavContainer = styled.div`
-    height: 4rem;
+    height: 6.5vh;
     padding: 1rem;
     display: flex;
+    justify-content: ${ props => props.authUser ? "flex-end" : "flex-start" };
     align-items: center;
     font-family: 'Varela Round', sans-serif;
-    justify-content: space-between;
 `
 
 export const NavBarLink = styled(Link)`
     text-decoration: none;
     color: #000;
-    font-weight: 100;
+    margin: 0 0.50rem;
 
     &:visted {
         color: #000;
     }
+    
     &:hover {
-        font-weight: 600;
+        color: rgb(53, 152, 206);
     }
+    
     &:active {
         color: rgb(53, 152, 206);
     }
-`
-export const NavLeft = styled.div`
-    justify-self: left;
+    
 `

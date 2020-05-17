@@ -1,10 +1,11 @@
 import React from 'react';
+import { SplashContainer } from './style'
 
 const Splash = () => {
     return (
-        <div>
+        <SplashContainer>
             Yo this the Splash page
-        </div>
+        </SplashContainer>
     );
 };
 

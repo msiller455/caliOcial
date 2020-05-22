@@ -16,8 +16,8 @@ export const SplashContainer = styled.div`
 export const Title = styled.div`
     display: flex;
     flex-flow: column;
-    font-family: 'Arvo', serif;
-    color: #fff;
+    font-family: ${props => props.theme.titleFont};
+    color: ${props => props.theme.mainWhite};
 
     h1 {
         font-size: 4rem;

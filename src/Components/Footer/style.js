@@ -6,7 +6,7 @@ export const FooterContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: 'Varela Round', sans-serif;
+    font-family: ${props => props.theme.linkFont};
     padding: 1rem;
 `
 
@@ -22,15 +22,4 @@ export const MediaLinks = styled.div`
 export const MediaLink = styled.a`
     text-decoration: none;
     margin: 0.25rem;
-
-    &:visited {
-        color: black;
-    }
-    &:hover {
-        color: rgb(53, 152, 206);
-    }
-    
-    &:active {
-        color: rgb(53, 152, 206);
-    }
 `

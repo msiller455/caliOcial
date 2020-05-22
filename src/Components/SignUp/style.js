@@ -7,7 +7,7 @@ export const SignUpContainer = styled.div`
     background-size: cover;
     background-position: bottom;
     height: 87vh;
-    font-family: 'Oxygen', sans-serif;
+    font-family: ${props => props.theme.primaryFont};
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -16,7 +16,7 @@ export const SignUpContainer = styled.div`
 `
 
 export const SignUpWindow = styled.div`
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: ${props => props.theme.backdropColor};
     padding: 3rem;
     width: 30%;
     display: flex;
@@ -24,8 +24,6 @@ export const SignUpWindow = styled.div`
     align-items: center;
 
     h1 {
-        font-size: 2em;
-        font-weight: bold;
         margin: 1rem 0;
     }
 
@@ -36,7 +34,7 @@ export const SignUpWindow = styled.div`
 
 export const SignUpForm = styled.form`
     width: 10rem;
-    font-family: 'Oxygen', sans-serif;
+    font-family: ${props => props.theme.primaryFont};
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -53,32 +51,5 @@ export const SignUpForm = styled.form`
         border-bottom: 2px solid black;
         text-decoration: none;
         outline: none;
-    }
-
-    button {
-        color: white;
-        font-family: 'Oxygen', sans-serif;
-        font-size: 1rem;
-        margin-top: 1rem;
-        background-color: #45A3D7;
-        height: 3rem;
-        width: 10rem;
-        border-radius: 20px;
-        border: solid 0px;
-    }
-
-    button:active {
-        background-color: white;
-        color: black;
-    }
-
-    button:hover {
-        font-family: 'Oxygen', sans-serif;
-        font-size: 1rem;
-        margin-top: 1rem;
-        background-color: rgb(34, 96, 129);
-        height: 3rem;
-        width: 10rem;
-        border-radius: 20px;
     }
 `

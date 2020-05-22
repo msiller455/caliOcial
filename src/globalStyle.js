@@ -5,13 +5,50 @@ export const GlobalStyle = createGlobalStyle`
     * {
         margin: 0;
         padding: 0;
-        font-size: 16px;
         box-sizing: border-box;
     }
 
-    h1 {
-        font-size: DEFAULT;
+    html: {
+        font-size: 62.5%;
     }
 
+    a {
+        color: ${props => props.theme.mainBlack};
+    }
+
+    a:visited {
+        color: ${props => props.theme.mainBlack};
+    }
+
+    a:hover {
+        color: ${props => props.theme.hoverColor};
+    }
+
+    button {
+        font-family: ${props => props.theme.primaryFont};
+        font-size: 1rem;
+        margin-top: 1rem;
+        color: ${props => props.theme.mainBlack};
+        background-color: ${props => props.theme.mainWhite};
+        height: 3rem;
+        width: 10rem;
+        border-radius: 20px;
+        border: solid 0px;
+    }
+
+    button:active {
+        background-color: ${props => props.theme.mainWhite};
+        color: ${props => props.theme.mainBlack};
+    }
+
+    button:hover {
+        font-size: 1rem;
+        margin-top: 1rem;
+        color: ${props => props.theme.mainWhite};
+        background-color: ${props => props.theme.hoverColor};
+        height: 3rem;
+        width: 10rem;
+        border-radius: 20px;
+    }
 
 `

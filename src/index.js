@@ -2,16 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App/App';
 import * as serviceWorker from './serviceWorker';
+import { ThemeProvider } from 'styled-components'
 import { GlobalStyle } from './globalStyle'
 import { BrowserRouter as Router } from 'react-router-dom'
+import { theme } from './constants/theme'
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <GlobalStyle />
-    <Router>
-      <App />
-    </Router>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Router>
+        <App />
+      </Router>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

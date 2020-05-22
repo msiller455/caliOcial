@@ -13,10 +13,6 @@ export const SignUpContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    h1 {
-        margin: 1rem 0;
-    }
 `
 
 export const SignUpWindow = styled.div`
@@ -26,6 +22,12 @@ export const SignUpWindow = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    h1 {
+        font-size: 2em;
+        font-weight: bold;
+        margin: 1rem 0;
+    }
 
     @media (max-width: 700px) {
         width: 50%;

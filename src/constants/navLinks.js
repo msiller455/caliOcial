@@ -20,6 +20,6 @@ export const authLinks = [
     },
     {
         text: 'Sign Up',
-        path: '#'
+        path: '/signup'
     }
 ]

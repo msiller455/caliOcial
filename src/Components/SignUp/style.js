@@ -20,7 +20,7 @@ export const SignUpContainer = styled.div`
 `
 
 export const SignUpWindow = styled.div`
-    background-color: rgba(255, 255, 255, 0.26);
+    background-color: rgba(255, 255, 255, 0.5);
     padding: 3rem;
     width: 30%;
     display: flex;

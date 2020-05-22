@@ -1,10 +1,13 @@
 import React from 'react';
-import { SplashContainer } from './style'
+import { SplashContainer, Title } from './style'
 
 const Splash = () => {
     return (
         <SplashContainer>
-            Yo this the Splash page
+            <Title>
+                <h1>cali | OCIAL</h1>
+                <h3>social solutions towards cleaner beaches</h3>
+            </Title>
         </SplashContainer>
     );
 };

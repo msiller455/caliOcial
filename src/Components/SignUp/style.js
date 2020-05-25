@@ -38,18 +38,47 @@ export const SignUpForm = styled.form`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-content: center;
 
     label, input {
         margin: 0.25rem 0;
+    }
+
+    label {
+        align-self: flex-start;
+        margin-top: 1rem;
     }
 
     input {
         font-size: 1rem;
         background: none;
         border: none;
-        border-bottom: 2px solid black;
+        border-bottom: 2px solid ${props => props.theme.mainBlack};
         text-decoration: none;
         outline: none;
     }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover,
+    textarea:-webkit-autofill:focus,
+    select:-webkit-autofill,
+    select:-webkit-autofill:hover,
+    select:-webkit-autofill:focus {
+        border: none;
+        border-bottom: 2px solid ${props => props.theme.mainBlack};
+        -webkit-text-fill-color: ${props => props.theme.mainBlack};
+        -webkit-box-shadow: 0 0 0px 0  inset;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+`
+
+export const ErrorMessage = styled.span`
+    height: 15px;
+    color: red;
+    font-size: .75rem;
+    visibility: ${props => props.error ? "visible" : "hidden"};
+    align-self: flex-start;
+    /* margin: 1rem; */
 `

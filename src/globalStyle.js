@@ -34,6 +34,7 @@ export const GlobalStyle = createGlobalStyle`
         width: 10rem;
         border-radius: 20px;
         border: solid 0px;
+        align-self: center;
     }
 
     button:active {

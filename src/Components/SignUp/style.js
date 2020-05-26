@@ -27,13 +27,22 @@ export const SignUpWindow = styled.div`
         margin: 1rem 0;
     }
 
-    @media (max-width: 700px) {
-        width: 50%;
+    @media (max-width: 500px) {
+        width: 80%;
+        height: 85vh;
+    }
+
+    @media (min-width: 501px) and (max-width: 700px) {
+        width: 70%;
+    }
+
+    @media (min-width: 701px) and (max-width: 1400px) {
+        width: 40%;
     }
 `
 
 export const SignUpForm = styled.form`
-    width: 10rem;
+    width: 20rem;
     font-family: ${props => props.theme.primaryFont};
     display: flex;
     flex-direction: column;
@@ -72,10 +81,15 @@ export const SignUpForm = styled.form`
         -webkit-box-shadow: 0 0 0px 0  inset;
         transition: background-color 5000s ease-in-out 0s;
     }
+
+    @media (max-width: 900px) {
+        width: 16rem;
+    }
 `
 
 export const ErrorMessage = styled.span`
-    height: 15px;
+    text-align: left;
+    height: 30px;
     color: red;
     font-size: .75rem;
     visibility: ${props => props.error ? "visible" : "hidden"};

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SignUpContainer, SignUpWindow, SignUpForm, ErrorMessage } from './style'
+import { AuthContainer, AuthWindow, AuthForm, ErrorMessage } from '../style'
 
 const SignUp = () => {
 
@@ -17,6 +17,7 @@ const SignUp = () => {
         email: '',
         passwordOne: '',
         passwordTwo: '',
+        error: ''
     })
 
 
@@ -112,51 +113,51 @@ const SignUp = () => {
     }
 
     return (
-        <SignUpContainer>
-            <SignUpWindow>
+        <AuthContainer>
+            <AuthWindow>
                 <h1>Sign up</h1>
-                <SignUpForm onSubmit={handleSubmit}>
+                <AuthForm onSubmit={handleSubmit}>
                     <label>
                         Username:
                     </label>
-                    <ErrorMessage error={errorMessages.username}>
+                    <ErrorMessage>
                         {errorMessages.username}
                     </ErrorMessage>
                     <input type="text" name="username" value={formData.username} onChange={handleChange}/>
                     <label>
                         Name:
                     </label>
-                    <ErrorMessage error={errorMessages.name}>
+                    <ErrorMessage>
                         {errorMessages.name}
                     </ErrorMessage>
                     <input type="text" name="name" value={formData.name} onChange={handleChange}/>
                     <label>
                         Email:
                     </label>
-                    <ErrorMessage error={errorMessages.email}>
+                    <ErrorMessage>
                         {errorMessages.email}
                     </ErrorMessage>
                     <input type="email" name="email" value={formData.email} onChange={handleChange}/>
                     <label>
                         Password:
                     </label>
-                    <ErrorMessage error={errorMessages.passwordOne}>
+                    <ErrorMessage>
                         {errorMessages.passwordOne}
                     </ErrorMessage>
                     <input type="password" name="passwordOne" value={formData.passwordOne} onChange={handleChange}/>
                     <label>
                         Confirm Password:
                     </label>
-                    <ErrorMessage error={errorMessages.passwordTwo}>
+                    <ErrorMessage>
                         {errorMessages.passwordTwo}
                     </ErrorMessage>
                     <input type="password" name="passwordTwo"value={formData.passwordTwo} onChange={handleChange}/>
                     <button type="submit">
                         Create Profile
                     </button>
-                </SignUpForm>
-            </SignUpWindow>
-        </SignUpContainer>
+                </AuthForm>
+            </AuthWindow>
+        </AuthContainer>
     );
 };
 

@@ -16,7 +16,7 @@ export const userLinks = [
 export const authLinks = [
     {
         text: 'Login',
-        path: '#'
+        path: '/login'
     },
     {
         text: 'Sign Up',

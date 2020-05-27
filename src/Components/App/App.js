@@ -1,8 +1,9 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom'
-import SignUp from '../SignUp'
-import Splash from '../Splash'
 import NavBar from '../NavBar'
+import Splash from '../Splash'
+import SignUp from '../Auth/SignUp'
+import Login from '../Auth/Login'
 import Footer from '../Footer'
 
 const App = () => {
@@ -15,6 +16,9 @@ const App = () => {
           </Route>
           <Route path="/signup">
             <SignUp />
+          </Route>
+          <Route path="/login">
+            <Login />
           </Route>
         </Switch>
       <Footer />

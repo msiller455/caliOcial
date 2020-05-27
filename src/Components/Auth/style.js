@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import signUpImg from '../../resources/images/purple-sky.png'
 
 
-export const SignUpContainer = styled.div`
+export const AuthContainer = styled.div`
     background-image: url(${signUpImg});
     background-size: cover;
     background-position: bottom;
@@ -15,7 +15,7 @@ export const SignUpContainer = styled.div`
     align-items: center;
 `
 
-export const SignUpWindow = styled.div`
+export const AuthWindow = styled.div`
     background-color: ${props => props.theme.backdropColor};
     padding: 3rem;
     width: 30%;
@@ -29,7 +29,7 @@ export const SignUpWindow = styled.div`
 
     @media (max-width: 500px) {
         width: 80%;
-        height: 85vh;
+        height: ${props => props.page === "login" ? "60vh" : "85vh"}
     }
 
     @media (min-width: 501px) and (max-width: 700px) {
@@ -41,7 +41,7 @@ export const SignUpWindow = styled.div`
     }
 `
 
-export const SignUpForm = styled.form`
+export const AuthForm = styled.form`
     width: 20rem;
     font-family: ${props => props.theme.primaryFont};
     display: flex;
@@ -92,7 +92,5 @@ export const ErrorMessage = styled.span`
     height: 30px;
     color: red;
     font-size: .75rem;
-    visibility: ${props => props.error ? "visible" : "hidden"};
     align-self: flex-start;
-    /* margin: 1rem; */
 `

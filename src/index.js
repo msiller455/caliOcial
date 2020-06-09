@@ -1,21 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App/App';
+import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import { ThemeProvider } from 'styled-components'
 import { GlobalStyle } from './globalStyle'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { theme } from './constants/theme'
+import Firebase, { FirebaseContext } from './components/Firebase'
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <Router>
-        <App />
-      </Router>
-    </ThemeProvider>
+    <FirebaseContext.Provider value={new Firebase()}>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <Router>
+          <App />
+        </Router>
+      </ThemeProvider>
+    </FirebaseContext.Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

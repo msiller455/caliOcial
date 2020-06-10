@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { FirebaseContext } from '../../Firebase'
 import useForm from '../hooks/useForm'
 import validate from '../hooks/validationRules'
 import { AuthContainer, AuthWindow, AuthForm, ErrorMessage } from '../style'
 
 const Login = () => {
+    const firebase = useContext(FirebaseContext)
 
     const login = () => {
-        console.log(values)
-        console.log('WE LOGGED IN')
+        firebase.login(values.email, values.password)
+        .then(authUser => console.log(authUser))
     }
 
     const { errors, values, handleChange, handleSubmit } = useForm(login, validate.loginValidate)

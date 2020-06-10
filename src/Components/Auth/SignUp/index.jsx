@@ -2,14 +2,16 @@ import React, { useContext } from 'react';
 import { FirebaseContext } from '../../Firebase'
 import useForm from '../hooks/useForm'
 import validate from '../hooks/validationRules'
+import { useHistory } from 'react-router-dom'
 import { AuthContainer, AuthWindow, AuthForm, ErrorMessage } from '../style'
 
 const SignUp = (props) => {
     const firebase = useContext(FirebaseContext)
-    
+    const history = useHistory()
+
     const signUp = () => {
         firebase.signUp(values.email, values.passwordOne)
-        .then(authUser => console.log(authUser))
+        .then(authUser => history.push('/home'))
     }
 
     const { errors, values, handleChange, handleSubmit } = useForm(signUp, validate.signUpValidate)

@@ -3,7 +3,7 @@ import { FirebaseContext } from '../../Firebase'
 import useForm from '../hooks/useForm'
 import validate from '../hooks/validationRules'
 import { useHistory } from 'react-router-dom'
-import { AuthContainer, AuthWindow, AuthForm, ErrorMessage } from '../style'
+import { AuthContainer, AuthWindow, AuthForm, ErrorMessage, AuthLink, PwMessageContainer } from '../style'
 
 const Login = () => {
     const firebase = useContext(FirebaseContext)
@@ -32,9 +32,14 @@ const Login = () => {
                         Password:
                     </label>
                     <input type="password" name="password" value={values.password || ''} onChange={handleChange}/>
-                    <ErrorMessage>
-                        {errors.password || ''}
-                    </ErrorMessage>
+                    <PwMessageContainer>
+                        <ErrorMessage>
+                            {errors.password || ''}
+                        </ErrorMessage>
+                        <AuthLink to="/pwforget">
+                            Forgot Password?
+                        </AuthLink>
+                    </PwMessageContainer>
                     <button type="submit">
                         Login
                     </button>

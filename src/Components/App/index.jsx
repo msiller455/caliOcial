@@ -7,6 +7,8 @@ import SignUp from '../Auth/SignUp'
 import Login from '../Auth/Login'
 import Footer from '../Footer'
 import Home from '../Home'
+import Account from '../Account'
+import PwForget from '../Auth/PwForget';
 
 const App = () => {
   const firebase = useContext(FirebaseContext)
@@ -18,7 +20,6 @@ const App = () => {
         ? setAuthUser({ authUser })
         : setAuthUser(null)
     })
-
   }, [])
 
   return (
@@ -36,6 +37,12 @@ const App = () => {
           </Route>
           <Route path="/home">
             <Home />
+          </Route>
+          <Route path="/account">
+            <Account />
+          </Route>
+          <Route path="/pwforget">
+            <PwForget />
           </Route>
         </Switch>
       <Footer />

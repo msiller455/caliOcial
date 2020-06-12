@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import signUpImg from '../../resources/images/purple-sky.png'
+import { Link } from 'react-router-dom'
 
 
 export const AuthContainer = styled.div`
@@ -19,11 +20,16 @@ export const AuthWindow = styled.div`
     background-color: ${props => props.theme.backdropColor};
     padding: 3rem;
     width: 30%;
+    height: ${props => props.page === "login" ? "430px" : ""};
     display: flex;
     flex-direction: column;
     align-items: center;
 
     h1 {
+        margin: 1rem 0;
+    }
+
+    p {
         margin: 1rem 0;
     }
 
@@ -87,10 +93,22 @@ export const AuthForm = styled.form`
     }
 `
 
+export const PwMessageContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
+
+
 export const ErrorMessage = styled.span`
     text-align: left;
     height: 30px;
     color: red;
     font-size: .75rem;
     align-self: flex-start;
+`
+
+export const AuthLink = styled(Link)`
+    font-size: ${props => props.page === "forget" ? "1rem" : "0.75rem"};
+    text-decoration: none;
+    margin-top: ${props => props.page === "forget" ? "1.5rem" : ""};
 `

@@ -14,6 +14,7 @@ export const GlobalStyle = createGlobalStyle`
 
     a {
         color: ${props => props.theme.mainBlack};
+        transition: all 0.25s
     }
 
     a:visited {
@@ -35,6 +36,7 @@ export const GlobalStyle = createGlobalStyle`
         border-radius: 20px;
         border: solid 0px;
         align-self: center;
+        transition: all 0.25s
     }
 
     button:active {

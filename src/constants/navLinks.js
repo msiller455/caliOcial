@@ -1,15 +1,15 @@
 export const userLinks = [
     {
         text: 'Home',
-        path: '#'
+        path: '/home'
     },
     {
         text: 'Clean-Ups',
         path: '#'
     },
     {
-        text: 'Search Users',
-        path: '#'
+        text: 'Account',
+        path: '/account'
     }
 ]
 
@@ -21,5 +21,12 @@ export const authLinks = [
     {
         text: 'Sign Up',
         path: '/signup'
+    }
+]
+
+export const accountLinks = [
+    {
+        text: '',
+        path: ''
     }
 ]

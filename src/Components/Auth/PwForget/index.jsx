@@ -8,16 +8,16 @@ const PwForget = () => {
     const firebase = useContext(FirebaseContext)
 
     const sendEmail = () => {
-        console.log(values.email)
+        firebase.passwordReset(values.email).then(res => console.log("CHECK YO EMAIL"))
     }
 
-    const { errors, values, handleChange, handleSubmit } = useForm(sendEmail, validate.loginValidate)
+    const { errors, values, handleChange, handleSubmit } = useForm(sendEmail, validate.forgetValidate)
 
     return (
         <AuthContainer>
             <AuthWindow page="login">
                 <h1>Forgot Password</h1>
-                <p>Please enter your email address and we will send you an email about how to reset your password.</p>
+                <p>Please enter your email address and we will send you an email to reset your password.</p>
                 <AuthForm onSubmit={handleSubmit}>
                     <label>
                         Email:

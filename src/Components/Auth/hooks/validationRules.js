@@ -46,7 +46,20 @@ const loginValidate = (values) => {
     return errors
 }
 
+const forgetValidate = (values) => {
+    const errors = {}
+
+    if(!values.email) {
+        errors.email = 'Email address is required'
+    } else if(!emailRegEx.test(values.email)) {
+        errors.email = 'Please enter a valid email address'
+    }
+
+    return errors
+}
+
 export default {
     signUpValidate,
-    loginValidate
+    loginValidate,
+    forgetValidate
 }

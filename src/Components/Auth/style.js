@@ -100,11 +100,11 @@ export const PwMessageContainer = styled.div`
 
 
 export const ErrorMessage = styled.span`
-    text-align: left;
+    text-align: ${props => props.firebase ? "center" : "left"};
     height: 30px;
     color: red;
     font-size: .75rem;
-    align-self: flex-start;
+    align-self: ${props => props.firebase ? "center" : "flex-start"};
 `
 
 export const AuthLink = styled(Link)`

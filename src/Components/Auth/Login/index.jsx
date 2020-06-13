@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { FirebaseContext } from '../../Firebase'
 import useForm from '../hooks/useForm'
 import validate from '../hooks/validationRules'
@@ -8,10 +8,12 @@ import { AuthContainer, AuthWindow, AuthForm, ErrorMessage, AuthLink, PwMessageC
 const Login = () => {
     const firebase = useContext(FirebaseContext)
     const history = useHistory()
+    const [ firebaseError, setFirebaseError ] = useState('')
 
     const login = () => {
         firebase.login(values.email, values.password)
         .then(authUser => history.push('/home'))
+        .catch(error => setFirebaseError(error.message))
     }
 
     const { errors, values, handleChange, handleSubmit } = useForm(login, validate.loginValidate)
@@ -20,6 +22,9 @@ const Login = () => {
         <AuthContainer>
             <AuthWindow page="login">
                 <h1>Login</h1>
+                <ErrorMessage firebase={true}>
+                    {firebaseError}
+                </ErrorMessage>
                 <AuthForm onSubmit={handleSubmit}>
                     <label>
                         Email:

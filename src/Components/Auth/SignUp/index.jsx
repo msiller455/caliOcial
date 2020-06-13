@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { FirebaseContext } from '../../Firebase'
 import useForm from '../hooks/useForm'
 import validate from '../hooks/validationRules'
@@ -8,10 +8,20 @@ import { AuthContainer, AuthWindow, AuthForm, ErrorMessage } from '../style'
 const SignUp = (props) => {
     const firebase = useContext(FirebaseContext)
     const history = useHistory()
+    const [ firebaseError, setFirebaseError ] = useState('')
 
     const signUp = () => {
         firebase.signUp(values.email, values.passwordOne)
-        .then(authUser => history.push('/home'))
+        .then(authUser => {
+            return firebase.user(authUser.user.uid)
+                .set({
+                    username: values.username,
+                    email: values.email,
+                    name: values.name,
+                })
+        })
+        .then(() => history.push('/home'))
+        .catch(error => setFirebaseError(error.message))
     }
 
     const { errors, values, handleChange, handleSubmit } = useForm(signUp, validate.signUpValidate)
@@ -20,6 +30,9 @@ const SignUp = (props) => {
         <AuthContainer>
             <AuthWindow>
                 <h1>Sign up</h1>
+                <ErrorMessage firebase={true}>
+                    {firebaseError}
+                </ErrorMessage>
                 <AuthForm onSubmit={handleSubmit}>
                     <label>
                         Username:

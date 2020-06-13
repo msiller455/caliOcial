@@ -1,14 +1,16 @@
 import React, { useContext } from 'react';
 import { FirebaseContext } from '../../Firebase'
+import { useHistory } from 'react-router-dom'
 import useForm from '../hooks/useForm'
 import validate from '../hooks/validationRules'
 import { AuthContainer, AuthWindow, AuthForm, ErrorMessage, AuthLink } from '../style'
 
 const PwForget = () => {
     const firebase = useContext(FirebaseContext)
+    const history = useHistory()
 
     const sendEmail = () => {
-        firebase.passwordReset(values.email).then(res => console.log("CHECK YO EMAIL"))
+        firebase.passwordReset(values.email).then(res => history.push('/login'))
     }
 
     const { errors, values, handleChange, handleSubmit } = useForm(sendEmail, validate.forgetValidate)

@@ -14,13 +14,24 @@ const App = () => {
   const firebase = useContext(FirebaseContext)
   const [ authUser, setAuthUser ] = useState(null)
 
+  const getBeaches = () => {
+    fetch('https://api.coastal.ca.gov/ccd/v1/locations')
+    .then(res => res.json())
+    .then(data => {
+      const allCounties = [...new Set(data.map(beach => beach.county_region))]
+      
+    })
+  }
+
   useEffect(() => {
+    getBeaches()
       firebase.auth.onAuthStateChanged(authUser => {
       authUser
         ? setAuthUser({ authUser })
         : setAuthUser(null)
     })
   }, [])
+
 
   return (
     <div>

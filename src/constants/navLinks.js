@@ -5,7 +5,7 @@ export const userLinks = [
     },
     {
         text: 'Clean-Ups',
-        path: '#'
+        path: '/cleanups'
     },
     {
         text: 'Account',

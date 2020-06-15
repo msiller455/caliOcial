@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { FirebaseContext } from '../../Firebase'
 import { useHistory } from 'react-router-dom'
 import useForm from '../hooks/useForm'
@@ -8,9 +8,18 @@ import { AuthContainer, AuthWindow, AuthForm, ErrorMessage, AuthLink } from '../
 const PwForget = () => {
     const firebase = useContext(FirebaseContext)
     const history = useHistory()
+    const [ firebaseError, setFirebaseError ] = useState()
 
     const sendEmail = () => {
-        firebase.passwordReset(values.email).then(res => history.push('/login'))
+        firebase.passwordReset(values.email)
+        .then(res => history.push('/login'))
+        .catch(error => {
+            if(error.code === "auth/user-not-found") {
+                setFirebaseError("There is no user attached to this email")
+            } else {
+                setFirebaseError(error.message)
+            }
+        })
     }
 
     const { errors, values, handleChange, handleSubmit } = useForm(sendEmail, validate.forgetValidate)
@@ -19,6 +28,9 @@ const PwForget = () => {
         <AuthContainer>
             <AuthWindow page="login">
                 <h1>Forgot Password</h1>
+                <ErrorMessage firebase={true}>
+                    {firebaseError}
+                </ErrorMessage>
                 <p>Please enter your email address and we will send you an email to reset your password.</p>
                 <AuthForm onSubmit={handleSubmit}>
                     <label>

@@ -21,7 +21,9 @@ const SignUp = (props) => {
                 })
         })
         .then(() => history.push('/home'))
-        .catch(error => setFirebaseError(error.message))
+        .catch(error => {
+            setFirebaseError(error.message)
+        })
     }
 
     const { errors, values, handleChange, handleSubmit } = useForm(signUp, validate.signUpValidate)

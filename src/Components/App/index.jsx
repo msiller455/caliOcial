@@ -9,10 +9,12 @@ import Footer from '../Footer'
 import Home from '../Home'
 import Account from '../Account'
 import PwForget from '../Auth/PwForget';
+import CleanUps from '../CleanUps'
 
 const App = () => {
   const firebase = useContext(FirebaseContext)
   const [ authUser, setAuthUser ] = useState(null)
+  const [ cleanUps, setCleanups ] = useState([])
   const [ beachData, setBeachData ] = useState({})
 
   useEffect(() => {
@@ -49,6 +51,9 @@ const App = () => {
           </Route>
           <Route path="/home">
             <Home />
+          </Route>
+          <Route path="/cleanups">
+            <CleanUps />
           </Route>
           <Route path="/account">
             <Account />

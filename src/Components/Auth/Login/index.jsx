@@ -8,12 +8,19 @@ import { AuthContainer, AuthWindow, AuthForm, ErrorMessage, AuthLink, PwMessageC
 const Login = () => {
     const firebase = useContext(FirebaseContext)
     const history = useHistory()
-    const [ firebaseError, setFirebaseError ] = useState('')
+    const [ firebaseError, setFirebaseError ] = useState(' ')
 
     const login = () => {
         firebase.login(values.email, values.password)
         .then(authUser => history.push('/home'))
-        .catch(error => setFirebaseError(error.message))
+        .catch(error => {
+            console.log(error)
+            if(error.code === "auth/user-not-found" || error.code === "auth/wrong-password") {
+                setFirebaseError("Incorrect email or password")
+            } else {
+                setFirebaseError(error.message)
+            }
+        })
     }
 
     const { errors, values, handleChange, handleSubmit } = useForm(login, validate.loginValidate)

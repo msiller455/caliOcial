@@ -8,6 +8,13 @@ import {
 } from '../style'
 
 const NewCleanUp = (props) => {
+
+    function parseCounty(county) {
+        return county === '3_Central Coast' ?
+            'Central Coast'
+            : county
+    }
+
     return (
         <CleanUpsContainer>
             <CleanUpsWindow>
@@ -20,7 +27,7 @@ const NewCleanUp = (props) => {
                             </label>
                             <select name="county" size="5">
                                 {
-                                    props.beachData.counties.map(county => <option value="county" key={county}>{county}</option>)
+                                    props.beachData.counties.map(county => <option value="county" key={county}>{parseCounty(county)}</option>)
                                 }
                             </select>
                         </SelectInput>

@@ -17,4 +17,29 @@ export const CleanUpsContainer = styled.div`
 export const CleanUpsWindow = styled.div`
     background-color: ${props => props.theme.backdropColor};
     padding: 3rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 40rem;
+    width: 40rem;
+`
+export const CleanUpForm = styled.form`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+`
+
+
+export const SelectContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-items: space-evenly;
+`
+
+export const SelectInput = styled.div`
+    margin: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `

@@ -10,6 +10,7 @@ import Home from '../Home'
 import Account from '../Account'
 import PwForget from '../Auth/PwForget';
 import CleanUps from '../CleanUps/CleanUpsList'
+import NewCleanUp from '../CleanUps/NewCleanUp';
 
 const App = () => {
   const firebase = useContext(FirebaseContext)
@@ -18,10 +19,10 @@ const App = () => {
   const [ beachData, setBeachData ] = useState({})
 
   useEffect(() => {
-    fetch('https://api.coastal.ca.gov/ccd/v1/locations')
+    fetch('https://api.coastal.ca.gov/access/v1/locations')
     .then(res => res.json())
     .then(data => {
-      const allCounties = [...new Set(data.map(beach => beach.county_region))]
+      const allCounties = [...new Set(data.map(beach => beach.COUNTY))]
       setBeachData({
         counties: allCounties,
         beaches: data
@@ -54,6 +55,9 @@ const App = () => {
           </Route>
           <Route path="/cleanups">
             <CleanUps />
+          </Route>
+          <Route path="/newcleanup">
+            <NewCleanUp beachData={beachData}/>
           </Route>
           <Route path="/account">
             <Account />

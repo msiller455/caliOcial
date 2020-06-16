@@ -9,7 +9,7 @@ import Footer from '../Footer'
 import Home from '../Home'
 import Account from '../Account'
 import PwForget from '../Auth/PwForget';
-import CleanUps from '../CleanUps'
+import CleanUps from '../CleanUps/CleanUpsList'
 
 const App = () => {
   const firebase = useContext(FirebaseContext)

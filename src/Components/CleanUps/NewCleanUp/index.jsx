@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { FirebaseContext } from '../../Firebase';
+import { AuthUserContext } from '../../Session'
 import useCleanUpForm from '../../../hooks/useCleanUpForm'
-import validate from '../../../hooks/validationRules' 
+import validate from '../../../hooks/validationRules'
+import { useHistory } from 'react-router-dom'
 import { 
     CleanUpsContainer,
     CleanUpsWindow,
@@ -12,9 +15,18 @@ import {
 } from '../style'
 
 const NewCleanUp = (props) => {
+    const firebase = useContext(FirebaseContext)
+    const authUser = useContext(AuthUserContext)
+    const history = useHistory()
     
     const createCleanUp = () => {
-        console.log(values)
+        const data = {
+            createdBy: authUser.uid,
+            ...values
+        }
+        firebase.cleanUps.push(data)
+        .then(() => history.push('/cleanups'))
+        .catch(error => console.log(error))   
     }
 
     const parseCounty = county => {

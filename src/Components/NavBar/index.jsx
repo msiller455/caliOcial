@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { FirebaseContext } from '../Firebase'
+import { AuthUserContext } from '../Session'
 import { userLinks, authLinks } from '../../constants/navLinks'
 import { NavContainer, NavBarLink } from './style'
 import { useHistory } from 'react-router-dom'
@@ -7,14 +8,15 @@ import { useHistory } from 'react-router-dom'
 
 const NavBar = (props) => {
     const firebase = useContext(FirebaseContext)
+    const authUser = useContext(AuthUserContext)
     const history = useHistory()
 
     const signOut = () => firebase.signOut().then(() => history.push('/'))
 
     return (
-        <NavContainer authUser={props.authUser}>
+        <NavContainer authUser={authUser}>
             {
-                props.authUser
+                authUser
                 ? [userLinks.map((link, idx) => {
                     return [
                         <NavBarLink key={idx} to={link.path}>{link.text}</NavBarLink>,

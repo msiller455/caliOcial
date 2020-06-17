@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { FirebaseContext } from '../Firebase'
+import { AuthUserContext } from '../Session'
 import { Switch, Route } from 'react-router-dom'
 import NavBar from '../NavBar'
 import Splash from '../Splash'
@@ -30,16 +31,16 @@ const App = () => {
     })
 
     firebase.auth.onAuthStateChanged(authUser => {
-    authUser
-      ? setAuthUser({ authUser })
-      : setAuthUser(null)
-    })
+      authUser
+        ? setAuthUser(authUser)
+        : setAuthUser(null)
+      })
   }, [])
 
 
   return (
-    <div>
-      <NavBar authUser={authUser} />
+    <AuthUserContext.Provider value={authUser}>
+      <NavBar />
         <Switch>
           <Route exact path="/">
             <Splash />
@@ -67,7 +68,7 @@ const App = () => {
           </Route>
         </Switch>
       <Footer />
-    </div>
+    </AuthUserContext.Provider>
   );
 }
 

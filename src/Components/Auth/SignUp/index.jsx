@@ -5,7 +5,7 @@ import validate from '../../../hooks/validationRules'
 import { useHistory } from 'react-router-dom'
 import { AuthContainer, AuthWindow, AuthForm, ErrorMessage } from '../style'
 
-const SignUp = (props) => {
+const SignUp = () => {
     const firebase = useContext(FirebaseContext)
     const history = useHistory()
     const [ firebaseError, setFirebaseError ] = useState('')

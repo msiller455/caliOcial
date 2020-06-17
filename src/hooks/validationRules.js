@@ -58,8 +58,27 @@ const forgetValidate = (values) => {
     return errors
 }
 
+const createCleanUp = (values) => {
+    const errors = {}
+
+    if(!values.beach) {
+        errors.beach = 'Please select a beach'
+    }
+
+    if(!values.name) {
+        errors.name = 'Please provide a name for this clean up'
+    }
+
+    if(!values.description) {
+        errors.description = 'Please provide a description for this clean up'
+    }
+
+    return errors
+}
+
 export default {
     signUpValidate,
     loginValidate,
-    forgetValidate
+    forgetValidate,
+    createCleanUp
 }

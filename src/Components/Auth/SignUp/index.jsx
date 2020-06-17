@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { FirebaseContext } from '../../Firebase'
-import useForm from '../hooks/useForm'
-import validate from '../hooks/validationRules'
+import useForm from '../../../hooks/useForm'
+import validate from '../../../hooks/validationRules'
 import { useHistory } from 'react-router-dom'
 import { AuthContainer, AuthWindow, AuthForm, ErrorMessage } from '../style'
 

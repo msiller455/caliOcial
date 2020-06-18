@@ -24,9 +24,9 @@ const NewCleanUp = (props) => {
             createdBy: authUser.uid,
             ...values
         }
-        firebase.cleanUps.push(data)
+        firebase.db.ref('cleanups').push(data)
         .then(() => history.push('/cleanups'))
-        .catch(error => console.log(error))   
+        .catch(error => console.log(error))
     }
 
     const parseCounty = county => {

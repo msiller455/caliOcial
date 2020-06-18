@@ -33,7 +33,7 @@ class Firebase {
     user = uid => this.db.ref(`users/${uid}`)
     users = () => this.db.ref('users')
 
-    cleanUp = cid => this.db.ref(`cleanups/${cid}`)
+    cleanUp = (cid) => this.db.ref(`cleanups/${cid}`)
     cleanUps = () => this.db.ref('cleanups')
 }
 

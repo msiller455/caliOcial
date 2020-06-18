@@ -13,6 +13,7 @@ const SignUp = () => {
     const signUp = () => {
         firebase.signUp(values.email, values.passwordOne)
         .then(authUser => {
+            console.log(firebase.user)
             return firebase.user(authUser.user.uid)
                 .set({
                     username: values.username,

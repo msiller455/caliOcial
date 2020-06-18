@@ -20,6 +20,7 @@ const App = () => {
   const [ beachData, setBeachData ] = useState({})
 
   useEffect(() => {
+
     fetch('https://api.coastal.ca.gov/access/v1/locations')
     .then(res => res.json())
     .then(data => {
@@ -28,6 +29,15 @@ const App = () => {
         counties: allCounties,
         beaches: data
       })
+    })
+
+    firebase.cleanUps().on('value', snapshot => {
+      const cleanUpsObject = snapshot.val()
+      const cleanUps = Object.keys(cleanUpsObject).map(key => ({
+        ...cleanUpsObject[key],
+        cid: key
+      }))
+      setCleanups(cleanUps)
     })
 
     firebase.auth.onAuthStateChanged(authUser => {

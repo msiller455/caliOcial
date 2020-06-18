@@ -5,10 +5,11 @@ import { faGithubSquare, faLinkedin, faInstagramSquare } from '@fortawesome/free
 import { FooterContainer, Copyright, MediaLinks, MediaLink } from './style'
 
 const Footer = () => {
+    const year = new Date().getFullYear()
     return (
         <FooterContainer>
             <Copyright>
-                © 2020 Michael Siller
+                © {year} Michael Siller
             </Copyright>
             <MediaLinks>
                 <MediaLink target="_blank" href="https://github.com/msiller455">

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 
 const useCleanUpForm = (callback, validate, beaches) => {
     const [county, setCounty] = useState('')
+    const [dateTime, setDateTime] = useState(new Date())
     const [values, setValues] = useState({})
     const [errors, setErrors] = useState({})
     const [isSubmitting, setIsSubmitting] = useState(false)
@@ -26,6 +27,11 @@ const useCleanUpForm = (callback, validate, beaches) => {
         }))
     }
 
+    const handleDateChange = date => setValues(values => ({
+        ...values,
+        dateTime: date
+    }))
+
     
     const handleCountyChange = (event) => {
         event.persist()
@@ -43,12 +49,15 @@ const useCleanUpForm = (callback, validate, beaches) => {
 
     return {
         county,
+        dateTime,
         values,
         errors,
+        setDateTime,
         handleChange,
         handleSubmit,
         handleCountyChange,
-        handleBeachChange
+        handleBeachChange,
+        handleDateChange
     }
 }
 

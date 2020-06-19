@@ -4,6 +4,8 @@ import { AuthUserContext } from '../../Session'
 import useCleanUpForm from '../../../hooks/useCleanUpForm'
 import validate from '../../../hooks/validationRules'
 import { useHistory } from 'react-router-dom'
+// import DateTimePicker from 'react-datetime-picker';
+ 
 import { 
     CleanUpsContainer,
     CleanUpsWindow,
@@ -11,7 +13,8 @@ import {
     SelectContainer,
     SelectInput,
     InputContainer,
-    ErrorMessage
+    ErrorMessage,
+    CleanUpDateTimePicker
 } from '../style'
 
 const NewCleanUp = (props) => {
@@ -20,11 +23,13 @@ const NewCleanUp = (props) => {
     const history = useHistory()
     
     const createCleanUp = () => {
+        console.log(dateTime.toString())
         const data = {
             createdBy: authUser.uid,
+            dateTime: dateTime.toString(),
             ...values
         }
-        firebase.db.ref('cleanups').push(data)
+        firebase.createCleanUp(data)
         .then(() => history.push('/cleanups'))
         .catch(error => console.log(error))
     }
@@ -35,7 +40,7 @@ const NewCleanUp = (props) => {
         : county
     }
 
-    const { county, values, errors, handleChange, handleSubmit, handleCountyChange, handleBeachChange } = useCleanUpForm(createCleanUp, validate.createCleanUp, props.beachData.beaches)
+    const { county, dateTime, values, errors, setDateTime, handleChange, handleSubmit, handleCountyChange, handleBeachChange, handleDateChange } = useCleanUpForm(createCleanUp, validate.createCleanUp, props.beachData.beaches)
 
     return (
         <CleanUpsContainer>
@@ -71,6 +76,7 @@ const NewCleanUp = (props) => {
                             </ErrorMessage>
                         </SelectInput>
                     </SelectContainer>
+                    <CleanUpDateTimePicker name="dateTime" value={dateTime} onChange={setDateTime} clearIcon={null}/>
                     <InputContainer>
                         <label>
                             Name of Clean Up Event:

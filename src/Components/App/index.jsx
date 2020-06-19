@@ -16,6 +16,7 @@ import NewCleanUp from '../CleanUps/NewCleanUp';
 const App = () => {
   const firebase = useContext(FirebaseContext)
   const [ authUser, setAuthUser ] = useState(null)
+  const [ users, setUsers ] = useState([])
   const [ cleanUps, setCleanups ] = useState([])
   const [ beachData, setBeachData ] = useState({})
 
@@ -31,13 +32,26 @@ const App = () => {
       })
     })
 
+    firebase.users().on('value', snapshot => {
+      const usersObject = snapshot.val()
+      if(usersObject) {
+        const users = Object.keys(usersObject).map(key => ({
+          ...usersObject[key],
+          uid: key
+        }))
+        setUsers(users)
+      }
+    })
+
     firebase.cleanUps().on('value', snapshot => {
       const cleanUpsObject = snapshot.val()
-      const cleanUps = Object.keys(cleanUpsObject).map(key => ({
-        ...cleanUpsObject[key],
-        cid: key
-      }))
-      setCleanups(cleanUps)
+      if(cleanUpsObject) {
+        const cleanUps = Object.keys(cleanUpsObject).map(key => ({
+          ...cleanUpsObject[key],
+          cid: key
+        }))
+        setCleanups(cleanUps)
+      }
     })
 
     firebase.auth.onAuthStateChanged(authUser => {
@@ -65,10 +79,10 @@ const App = () => {
             <Home />
           </Route>
           <Route path="/cleanups">
-            <CleanUps />
+            <CleanUps cleanUps={cleanUps} />
           </Route>
           <Route path="/newcleanup">
-            <NewCleanUp beachData={beachData}/>
+            <NewCleanUp beachData={beachData} />
           </Route>
           <Route path="/account">
             <Account />

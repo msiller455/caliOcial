@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import cleanUpImg from '../../resources/images/beach-sunrise.png'
+import DateTimePicker from 'react-datetime-picker'
 
 export const CleanUpsContainer = styled.div`
     background-image: url(${cleanUpImg});
@@ -20,6 +21,7 @@ export const CleanUpsWindow = styled.div`
     text-align: center;
     display: flex;
     flex-direction: column;
+    align-items: center;
     height: 45rem;
     width: 40rem;
 
@@ -108,4 +110,33 @@ export const ErrorMessage = styled.span`
     color: red;
     font-size: .75rem;
     align-self: ${props => props.firebase ? "center" : "flex-start"};
+`
+
+export const CleanUpsList = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    
+    a {
+        display: inline-block;
+        text-decoration: none;
+        margin: 0.5rem 0;
+    }
+`
+
+export const CleanUpDateTimePicker = styled(DateTimePicker)`
+    align-self: center;
+    
+    button, button:hover {
+        width: auto;
+        margin-top: 0;
+    }
+
+    .react-datetime-picker__wrapper {
+        border: none;
+    }
+
+    .react-datetime-picker__inputGroup {
+        flex-grow: 0;
+    }
 `

@@ -33,8 +33,13 @@ class Firebase {
     user = uid => this.db.ref(`users/${uid}`)
     users = () => this.db.ref('users')
 
+    
+
+    // CleanUps API
     cleanUp = (cid) => this.db.ref(`cleanups/${cid}`)
     cleanUps = () => this.db.ref('cleanups')
+
+    createCleanUp = data => this.db.ref('cleanups').push(data)
 }
 
 export default Firebase

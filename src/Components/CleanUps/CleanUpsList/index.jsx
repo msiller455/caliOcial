@@ -12,7 +12,12 @@ const CleanUps = (props) => {
                     {
                         props.cleanUps.map(cleanUp => 
                         <Link to={`/cleanup/${cleanUp.cid}`}>
-                            {cleanUp.name}
+                            <div>
+                                {cleanUp.name}
+                            </div>
+                            <div>
+                                {new Date(cleanUp.dateTime).toDateString()}
+                            </div>
                         </Link>)
                     }
                 </CleanUpsList>

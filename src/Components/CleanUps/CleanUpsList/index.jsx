@@ -11,7 +11,7 @@ const CleanUps = (props) => {
                 <CleanUpsList>
                     {
                         props.cleanUps.map(cleanUp => 
-                        <Link to={`/cleanup/${cleanUp.cid}`}>
+                        <Link key={cleanUp.cid} to={{pathname: `/cleanups/${cleanUp.cid}`, state: {cleanUp}}}>
                             <div>
                                 {cleanUp.name}
                             </div>

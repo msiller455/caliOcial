@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react'
 import { FirebaseContext } from '../Firebase'
 import { AuthUserContext } from '../Session'
 import { Switch, Route } from 'react-router-dom'
@@ -9,10 +9,10 @@ import Login from '../Auth/Login'
 import Footer from '../Footer'
 import Home from '../Home'
 import Account from '../Account'
-import PwForget from '../Auth/PwForget';
+import PwForget from '../Auth/PwForget'
 import CleanUps from '../CleanUps/CleanUpsList'
-import NewCleanUp from '../CleanUps/NewCleanUp';
-import CleanUpDetail from '../CleanUps/CleanUpDetail';
+import NewCleanUp from '../CleanUps/NewCleanUp'
+import CleanUpDetail from '../CleanUps/CleanUpDetail'
 
 const App = () => {
   const firebase = useContext(FirebaseContext)

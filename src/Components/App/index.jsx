@@ -81,7 +81,7 @@ const App = () => {
             <Home />
           </Route>
           <Route exact path="/cleanups">
-            <CleanUps cleanUps={cleanUps} />
+            <CleanUps />
           </Route>
           <Route path="/newcleanup">
             <NewCleanUp beachData={beachData} />

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { FirebaseContext } from '../Firebase'
 import { AuthUserContext } from '../Session'
+import { CleanUpsContext } from '../CleanUps/context'
 import { Switch, Route } from 'react-router-dom'
 import NavBar from '../NavBar'
 import Splash from '../Splash'
@@ -64,7 +65,8 @@ const App = () => {
 
   return (
     <AuthUserContext.Provider value={authUser}>
-      <NavBar />
+      <CleanUpsContext.Provider value={cleanUps}>
+        <NavBar />
         <Switch>
           <Route exact path="/">
             <Splash />
@@ -94,7 +96,8 @@ const App = () => {
             <PwForget />
           </Route>
         </Switch>
-      <Footer />
+        <Footer />
+      </CleanUpsContext.Provider>
     </AuthUserContext.Provider>
   );
 }

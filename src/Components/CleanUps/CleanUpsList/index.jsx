@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { CleanUpsContext } from '../context'
 import { Link } from 'react-router-dom'
 import { CleanUpsContainer, CleanUpsWindow, CleanUpsList } from '../style'
 
-const CleanUps = (props) => {
-
+const CleanUps = () => {
+    const cleanUps = useContext(CleanUpsContext)
     return (
         <CleanUpsContainer>
             <CleanUpsWindow>
                 <h1>Clean Ups</h1>
                 <CleanUpsList>
                     {
-                        props.cleanUps.map(cleanUp => 
+                        cleanUps.map(cleanUp => 
                         <Link key={cleanUp.cid} to={{pathname: `/cleanups/${cleanUp.cid}`, state: {cleanUp}}}>
                             <div>
                                 {cleanUp.name}

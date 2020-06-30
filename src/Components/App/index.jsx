@@ -14,13 +14,16 @@ import PwForget from '../Auth/PwForget'
 import CleanUps from '../CleanUps/CleanUpsList'
 import NewCleanUp from '../CleanUps/NewCleanUp'
 import CleanUpDetail from '../CleanUps/CleanUpDetail'
+import Loader from '../Loader'
 
 const App = () => {
   const firebase = useContext(FirebaseContext)
   const [ authUser, setAuthUser ] = useState(null)
+  const [ currentUser, setCurrentUser ] = useState(null)
   const [ users, setUsers ] = useState([])
   const [ cleanUps, setCleanups ] = useState([])
   const [ beachData, setBeachData ] = useState({})
+  const [ isLoading, setIsLoading ] = useState(true)
 
   useEffect(() => {
     fetch('https://api.coastal.ca.gov/access/v1/locations')
@@ -56,46 +59,58 @@ const App = () => {
     })
 
     firebase.auth.onAuthStateChanged(authUser => {
-      authUser
-        ? setAuthUser(authUser)
-        : setAuthUser(null)
-      })
+      if(authUser) {
+        setAuthUser(authUser)
+        firebase.user(authUser.uid).once('value', snapshot => {
+          setCurrentUser(snapshot.val())
+        })
+      } else {
+        setAuthUser(null)
+        setCurrentUser(null)
+      }
+    })
+
+    setIsLoading(false)
   }, [])
 
 
   return (
-    <AuthUserContext.Provider value={authUser}>
+    <AuthUserContext.Provider value={currentUser}>
       <CleanUpsContext.Provider value={cleanUps}>
         <NavBar />
-        <Switch>
-          <Route exact path="/">
-            <Splash />
-          </Route>
-          <Route path="/signup">
-            <SignUp />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/home">
-            <Home />
-          </Route>
-          <Route exact path="/cleanups">
-            <CleanUps />
-          </Route>
-          <Route path="/newcleanup">
-            <NewCleanUp beachData={beachData} />
-          </Route>
-          <Route path="/cleanups/:cid">
-            <CleanUpDetail />
-          </Route>
-          <Route path="/account">
-            <Account />
-          </Route>
-          <Route path="/pwforget">
-            <PwForget />
-          </Route>
-        </Switch>
+        {
+          isLoading ? <Loader />
+          :
+          <Switch>
+            <Route exact path="/">
+              <Splash />
+            </Route>
+            <Route path="/signup">
+              <SignUp />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/home">
+              <Home />
+            </Route>
+            <Route exact path="/cleanups">
+              <CleanUps />
+            </Route>
+            <Route path="/newcleanup">
+              <NewCleanUp beachData={beachData} />
+            </Route>
+            <Route path="/cleanups/:cid">
+              <CleanUpDetail />
+            </Route>
+            <Route path="/account">
+              <Account />
+            </Route>
+            <Route path="/pwforget">
+              <PwForget />
+            </Route>
+          </Switch>
+        }
         <Footer />
       </CleanUpsContext.Provider>
     </AuthUserContext.Provider>

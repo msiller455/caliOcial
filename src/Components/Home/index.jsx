@@ -1,10 +1,30 @@
-import React from 'react';
-import { HomeContainer } from './style'
+import React, { useContext, useState, useEffect } from 'react';
+import { AuthUserContext } from '../Session'
+import { HomeContainer, UserInfo, EventStream } from './style'
+import Loader from '../Loader'
 
-const Home = (props) => {
+const Home = () => {
+    const [ isLoading, setIsLoading ] = useState(true)
+    const user = useContext(AuthUserContext)
+
+    useEffect(() => {
+        user && setIsLoading(false)
+    }, [user])
+
     return (
         <HomeContainer>
-            <h1>This is the home component</h1>
+            {
+                isLoading ? <Loader color={"white"} />
+                :
+                <>
+                    <UserInfo>
+                        <h1>{user.username}</h1>
+                    </UserInfo>
+                    <EventStream>
+
+                    </EventStream>
+                </>
+            }
         </HomeContainer>
     );
 };
